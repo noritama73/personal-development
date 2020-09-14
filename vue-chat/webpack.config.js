@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: '/dist/', //デプロイ時空白
     filename: 'build.js'
   },
   module: {
@@ -46,6 +46,7 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
+    //contentBase: 'dist',
     historyApiFallback: true,
     noInfo: true,
     overlay: true
@@ -66,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: true, //デプロイ時false
       compress: {
         warnings: false
       }

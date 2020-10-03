@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "フレン・E・ルスタリオ",
-        "pic": "static/pic/Furen_E_Lustario.png",
+        "pic": "Furen_E_Lustario",
         "song": 3,
         "talk": 3,
         "chara": 4,
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "name": "健屋花那",
-        "pic": "static/pic/Kana_Sukoya.png",
+        "pic": "Kana_Sukoya",
         "song": 3,
         "talk": 3,
         "chara": 5,
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "name": "竜胆尊",
-        "pic": "static/pic/Rindou_Mikoto.png",
+        "pic": "Rindou_Mikoto",
         "song": 5,
         "talk": 4,
         "chara": 5,
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "name": "リゼ・ヘルエスタ",
-        "pic": "static/pic/Rize_Heruesta_hp.png",
+        "pic": "Rize_Heruesta_hp",
         "song": 3,
         "talk": 4,
         "chara": 5,
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "name": "シスター・クレア",
-        "pic": "static/pic/Sister_Claire_200309.png",
+        "pic": "Sister_Claire_200309",
         "song": 4,
         "talk": 4,
         "chara": 5,

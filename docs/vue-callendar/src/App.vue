@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <SortWindow />
-    <Individuals />
+    <Header />
   </div>
 </template>
 
 <script>
-import Individuals from './components/Individuals'
-import SortWindow from  './components/SortWindow'
+import Header from './components/Header'
 
 export default {
   name: 'App',
-  components: { Individuals, SortWindow },
+  components: {
+    Header
+  },
+  data(){
+    
+  },
+  created(){
+    
+  }
 }
 </script>
 

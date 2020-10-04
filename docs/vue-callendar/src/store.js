@@ -8,48 +8,37 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     tasks: {
-      id: [],
       name: "",
-      date: [],
-      finished: []
-    },
-    select: {
-      year: Number,
-      month: Number,
-      day: Number
-    }
+      date: []
+    },//予定を格納する配列
+    selectedMonth: dayjs(),//カレンダーの表示に使用する日付
+    selectedDate: null,
+    selectedDay: null,//予定追加時にクリックされた日(date)
+    modalIsShow: false
   },
   getters: {
-    currentDate(state) {
-      return state.select;
-    }
+    showHeader(state) { //ヘッダーでの表示用
+      return state.selectedMonth.format('YYYY年MM月')
+    },
+    showBody(state) { //カレンダー本体の表示用
+      return state.selectedMonth
+    },
   },
   mutations: {
-    today(state) {
-      state.select.year = dayjs().year();
-      state.select.month = dayjs().month() + 1;
-      state.select.day = dayjs().date();
-    },
-    setDate(state, value) {
-      state.select.year = value;
-      state.select.month = value;
-      state.select.day = value;
-    },
-    prev(state) {
-      if (state.select.month === 1) {
-        state.select.month = 12;
-        state.select.year--;
-      } else {
-        state.select.month--;
-      }
+    prev(state) { //表示する年月の変更
+      state.selectedMonth = dayjs(state.selectedMonth).subtract(1,'month')
     },
     next(state) {
-      if (state.select.month === 12) {
-        state.select.month = 1;
-        state.select.year++;
-      } else {
-        state.select.month++;
-      }
+      state.selectedMonth = dayjs(state.selectedMonth).add(1,'month')
+    },
+    open(state) { //モーダルの開閉
+      state.modalIsShow = true
+    },
+    close(state) {
+      state.modalIsShow = false
+    },
+    targetDaySet(state, value) { //クリックされた日付の取得
+      state.selectedDay = value
     }
   }
 });

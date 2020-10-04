@@ -1,33 +1,44 @@
 <template>
   <div class="calendar-body">
     <div class="day-of-week" v-for="week in weeks" :key="week">{{ week }}</div>
-    <div class="date" v-for="day in calendarMake" :key="day">{{ day }}</div>
+    <div class="date" v-for="(day, index) in calendarMake" :key="index" @click.prevent="openForm(day)">{{ day }}</div>
   </div>
 </template>
 
 <script>
 import store from "../store";
-import { mapState } from "vuex";
 import dayjs from "dayjs";
 
 export default {
   data() {
     return {
       weeks: ["日", "月", "火", "水", "木", "金", "土"],
-      showDates: []
     };
   },
   computed: {
     calendarMake() {
-      const firstDate = dayjs(this.$store.getters.currentDate).startOf('month').date;
-      const lastDate = dayjs(this.$store.getters.currentDate).endOf('month').date
-      const space = (firstDate === 0 ? 6 : firstDate - 1);
-      //console.log(this.$store.state.select.month)
-      console.log(this.$store.getters.currentDate.startOf('month'))
-      //console.log(this.$store.getters.currentDate.month)
-      const list = []
-      //const list = [[...Array(space)].map(i=>" "), [...Array(lastdate)].map((_, i) => i+1)];
+      const firstDate = dayjs(this.$store.getters.showBody)
+        .startOf("month")
+        .day();
+      const lastDate = dayjs(this.$store.getters.showBody)
+        .endOf("month")
+        .date();
+      const list = [];
+      for (let i = 0; i < firstDate; i++) {
+        list.push(" ");
+      }
+      for (let i = 1; i <= lastDate; i++) {
+        list.push(i);
+      }
       return list;
+    }
+  },
+  methods:{
+    openForm(day){
+      if(day != " "){
+        this.$store.commit('targetDaySet',day)
+        this.$store.commit('open')
+      }
     }
   }
 };
@@ -42,7 +53,22 @@ export default {
 .date {
   width: 14.28%;
 }
+.day-of-week {
+  padding-bottom: 50px;
+}
 .date {
-  margin: 70px 0;
+  padding-bottom: 120px;
+}
+.date:nth-child(7n+1) {
+  color: red;
+}
+.date:nth-child(7n) {
+  color: blue;
+}
+.day-of-week:nth-child(1){
+  color: red;
+}
+.day-of-week:nth-child(7){
+  color: blue;
 }
 </style>

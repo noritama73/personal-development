@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store'
+import "dayjs/locale/ja"
 import dayjs from 'dayjs'
 
 dayjs.locale('ja');

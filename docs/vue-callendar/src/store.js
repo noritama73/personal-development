@@ -18,7 +18,7 @@ const store = new Vuex.Store({
   },
   getters: {
     showHeader(state) { //ヘッダーでの表示用
-      return state.selectedMonth.format('YYYY年MM月')
+      return state.selectedMonth
     },
     showBody(state) { //カレンダー本体の表示用
       return state.selectedMonth
@@ -39,6 +39,9 @@ const store = new Vuex.Store({
     },
     targetDaySet(state, value) { //クリックされた日付の取得
       state.selectedDay = value
+    },
+    updateSelectedDate(state, value) {
+      state.selectedDate = state.selectdMonth.date(value)
     }
   }
 });

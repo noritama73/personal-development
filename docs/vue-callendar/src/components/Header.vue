@@ -20,7 +20,7 @@ import dayjs from "dayjs";
 export default {
   computed: {
     today() {
-      return this.$store.getters.showHeader;
+      return this.$store.getters.showHeader.format('YYYY年MM月');
     } 
   },
   methods: {

@@ -1,7 +1,14 @@
 <template>
   <div class="calendar-body">
     <div class="day-of-week" v-for="week in weeks" :key="week">{{ week }}</div>
-    <div class="date" v-for="(day, index) in calendarMake" :key="index" @click.prevent="openForm(day)">{{ day }}</div>
+    <div
+      class="date"
+      v-for="(day, index) in calendarMake"
+      :key="index"
+      @click.prevent="openForm(day)"
+    >
+      {{ day }}
+    </div>
   </div>
 </template>
 
@@ -12,7 +19,7 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
-      weeks: ["日", "月", "火", "水", "木", "金", "土"],
+      weeks: ["日", "月", "火", "水", "木", "金", "土"]
     };
   },
   computed: {
@@ -33,11 +40,11 @@ export default {
       return list;
     }
   },
-  methods:{
-    openForm(day){
-      if(day != " "){
-        this.$store.commit('targetDaySet',day)
-        this.$store.commit('open')
+  methods: {
+    openForm(day) {
+      if (day != " ") {
+        this.$store.commit("targetDaySet", day);
+        this.$store.commit("open");
       }
     }
   }
@@ -59,16 +66,16 @@ export default {
 .date {
   padding-bottom: 120px;
 }
-.date:nth-child(7n+1) {
+.date:nth-child(7n + 1) {
   color: red;
 }
 .date:nth-child(7n) {
   color: blue;
 }
-.day-of-week:nth-child(1){
+.day-of-week:nth-child(1) {
   color: red;
 }
-.day-of-week:nth-child(7){
+.day-of-week:nth-child(7) {
   color: blue;
 }
 </style>
